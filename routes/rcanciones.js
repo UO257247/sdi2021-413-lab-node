@@ -7,14 +7,14 @@ module.exports = function(app, swig) {
     })
     app.get("/canciones", function(req, res) {
         let canciones = [{
-            "nombre " : "Blank Space",
-            "precio " : "1.2"
+            "nombre" : "Blank Space",
+            "precio" : "1.2"
         }, {
-            "nombre " : "See you again",
-            "precio ": "1.3"
+            "nombre" : "See you again",
+            "precio": "1.3"
         },{
-            "nombre " : "Uptown funk",
-            "precio " : "1.1"
+            "nombre" : "Uptown funk",
+            "precio" : "1.1"
          }];
 
         let respuesta = swig.renderFile('views/btienda.html',{
