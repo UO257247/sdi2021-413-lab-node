@@ -8,6 +8,8 @@ let bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+let gestorBD = require("./modules/gestorBD.js");
+gestorBD.init(app, mongo);
 
 app.use(express.static('public'));
 
@@ -17,8 +19,8 @@ app.set('db', 'mongodb://admin:sdi@tiendamusica-shard-00-00.gdnw4.mongodb.net:27
 
 
 //Rutas/controladores por lógica
-require("./routes/rusuarios.js")(app, swig); // (app, param1, param2, etc.)
-require("./routes/rcanciones.js")(app, swig, mongo); // (app, param1, param2, etc.)
+require("./routes/rusuarios.js")(app, swig, gestorBD); // (app, param1, param2, etc.)
+require("./routes/rcanciones.js")(app, swig, gestorBD); // (app, param1, param2, etc.)
 require("./routes/rautores.js")(app, swig);
 
 //lanzar servidor
