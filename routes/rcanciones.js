@@ -79,7 +79,8 @@ module.exports = function(app, swig, gestorBD) {
                 let respuesta = swig.renderFile('views/bcancion.html',
                     {
                         cancion: canciones[0],
-                        comentarios : comentarios
+                        comentarios : comentarios,
+                        usuario: req.session.usuario
                     });
                 res.send(respuesta);
             }
@@ -228,7 +229,8 @@ module.exports = function(app, swig, gestorBD) {
         let cancionId = gestorBD.mongo.ObjectID(req.params.id);
         let compra = {
             usuario : req.session.usuario,
-            cancionId : cancionId
+            cancionId : cancionId,
+
         }
         gestorBD.insertarCompra(compra ,function(idCompra){
             if ( idCompra == null ){

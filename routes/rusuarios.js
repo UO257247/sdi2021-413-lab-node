@@ -15,7 +15,7 @@ module.exports = function(app, swig, gestorBD) {
                 res.redirect("registrarse?mensaje=Error al registrar usuario");
             } else {
                // res.send('Usuario Insertado ' + id);
-                res.redirect("/identificarse?mensake=Nuevo usuario registrado");
+                res.redirect("/identificarse?mensaje=Nuevo usuario registrado");
             }
         });
     });
