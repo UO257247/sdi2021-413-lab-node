@@ -9,26 +9,23 @@
 			<img class="media-object" src="/portadas/{{ cancion._id.toString() }}.png" >
 		  </div>
 		  <div class="media-body">
-			 <h2>>{{ cancion.nombre }}</h2>
+			 <h2>{{ cancion.nombre }}</h2>
 			 <p>{{ cancion.autor }}</p>
 			 <p>{{ cancion.genero }}</p>
 
 			  <!-- Cambiar el precio por "reproducir" si ya está comprada o si es del autor-->
-			  <% if ( %>
-			  {{ usuario._id.toString() }}
-			  <% === %>
-			  {{ cancion.autor._id.toString() }}
-			  <%) { %>
+			  {% if usuario._id.toString() == cancion.autor._id.toString() %}
+
 			  <audio controls source
 					 src="/audios/{{ cancion._id.toString() }}.mp3"
 					 type="audio/mpeg">
 			  </audio>
-			  <% } else { %>
+			  {% else %}
 			  <a class="btn btn-primary pull-right"
 				 href="/cancion/comprar/{{cancion._id.toString()}}">
 				  {{ cancion.precio }} €
 			  </a>
-			  <% } %>
+			  {% endif %}
 
 		  </div>
 		</div>
@@ -68,7 +65,7 @@
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="texto">Texto :</label>
 			<div class="col-sm-10">
-				<input type="text" step="0.01" class="form-control" name="texto"
+				<input type="text" step="0.01" class="form-control" name="texto" id="texto"
 					   placeholder="Escribir comentario" required="true" />
 			</div>
 		</div>
