@@ -43,7 +43,12 @@
 
             },
             error : function (error){
-                $( "#contenedor-principal" ).load("widget-login.html");
+                //$( "#contenedor-principal" ).load("widget-login.html");
+                //console.log(error.responseJSON.error);
+                let texto = "<div class='alert alert-danger'>"+error.responseJSON.error+"</div>";
+                $( "#widget-agregar")
+                    .prepend(texto);
+
             }
         });
     }
